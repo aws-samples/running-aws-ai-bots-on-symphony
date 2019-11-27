@@ -75,9 +75,7 @@ To create the above conversational flows, we will build the following:
           ![HandleDocumentUploads Intent](readme_images/handle_document_uploads.png)
         * Keep other options default --> Save Intent. (We will configure a Lambda function for Fulfillment of the intent in the next step)
 
-* Testing
 
-  To test out the workflows, Click the 'Build' button and once the bot is Ready, you can test it out in the right pane 'Test bot'.   
 
 ---
 
@@ -92,7 +90,9 @@ To create the above conversational flows, we will build the following:
 
   2. Clone the repository to get code for the workshop and enter this command in terminal window  
 
-  `git clone https://git-codecommit.us-west-2.amazonaws.com/v1/repos/symphony-bot-repo`
+  `git clone https://github.com/aws-samples/running-aws-ai-bots-on-symphony.git`
+
+  3. Navigate and Right-click on /running-aws-ai-bots-on-symphony/kyc-lambda/boto3-layer.zip in Cloud9 explorer and    select Download it to local machine.
 
 ## PART 3 - Implement an AWS Lambda function to fulfill the above intents.
 
@@ -107,17 +107,16 @@ The lambda function will be invoked by the Lex bot for fulfillment of the above 
 
 To create and integrate the lambda function, follow the steps below -
 
-1. Create a role for Lambda
-  - AWS IAM Console --> Create role (name it - 'onboardLambdaRole')
-  - Add permissions policies for 'Lambda Basic execution' and 'TextractFullAccess'
-
-
-2. Add the Lambda layer (Boto3- Python SDK layer, needed for Textract functions)
+1. Add the Lambda layer (Boto3- Python SDK layer, needed for Textract functions)
   - AWS Lambda Console --> Layers --> Create layer
-  - Add Name (name it - 'onboardBoto3Layer'), Description, Upload boto3-layer.zip (provided - Where?)
+  - Add Name (name it - 'onboardBoto3Layer'), Description, Upload boto3-layer.zip (downloaded earlier)
     ![HandleDocumentUploads Intent](readme_images/lambda_layer.png)
   - Select 'Python 3.7' for compatible runtime --> Create
 
+2. Create a role for Lambda
+  - AWS IAM Console --> Create role
+  - Name the role  'onboardLambdaRole'
+  - Add permissions policies for 'Lambda Basic execution' and 'TextractFullAccess'
 
 3. Add the Lambda function (onboard_customer.py)
   - AWS Lambda Console --> Create function
@@ -128,10 +127,18 @@ To create and integrate the lambda function, follow the steps below -
     - In the Design section -->  click Layers --> click 'Add a layer'
     - Select Name = layer name created above, Version = 1
     - Click on 'onboard_customer' lambda function in Designer again. (so you are out of the Layer focus)
-    - Copy-Paste the Function code from onboard_customer.py (provided)
+    - Copy-Paste the Function code from onboard_customer.py (/running-aws-ai-bots-on-symphony/AWS-AI-Bots-on-Symphony/kyc-lambda/onboard_customer.py)
     - Increase Basic settings --> Timeout to 10 seconds
     - Save
 
+   ![Python Lambda Code](kyc-lambda/onboard_customer.py)
+
+  4. Goto the Lex Console and select new lambda (onboard_customer) for FullFillment for the two intents : GatherPersonalInfo and HandleDocumentUpload 
+  5. Click on the Publish button and **select alias as "DEV"**. 
+  
+  * Testing
+
+  To test out the workflows, you can test it out in the right pane 'Test bot'.   
 
 ---
 
@@ -155,12 +162,12 @@ Login to the AWS Console using credentials from Event Engine
 A Cloud9 environment and repository containing the source files needed for the workshop were setup in PART 2
 
 **Step 1** Symphony uses PKI authentication a bot listener to the bot agent running within Symphony platform. Each workshop participant is provided with private key in Event Engine
-1. Navigate to bot_rsa file at /symphony-bot-repo/kyc-bot/rsa/bot_rsa
+1. Navigate to bot_rsa file at /running-aws-ai-bots-on-symphony/kyc-bot/rsa/bot_rsa
 2. Paste the private key (replace the placeholder key - "PASTE KEY HERE")
 
 ![Replace Private Key ](./readme_images/Replace_Private_Key.png)
 
-3. Open config.json at /symphony-bot-repo/kyc-bot/config.json and update the following fields from what is received from Event Engine
+3. Open config.json at /running-aws-ai-bots-on-symphony/kyc-bot/config.json and update the following fields from what is received from Event Engine
 
  * botUsername
  * botEmailAddress
