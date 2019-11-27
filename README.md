@@ -134,7 +134,7 @@ To create and integrate the lambda function, follow the steps below -
    ![Python Lambda Code](kyc-lambda/onboard_customer.py)
 
   4. Goto the Lex Console and select new lambda (onboard_customer) for FullFillment for the two intents : GatherPersonalInfo and HandleDocumentUpload 
-  5. Click on the Publish button and **select alias as "DEV"**. 
+  5. Build and Publish the bot. **select alias as "DEV" in the publish dialog**. 
   
   * Testing
 
