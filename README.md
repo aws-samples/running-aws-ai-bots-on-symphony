@@ -204,7 +204,7 @@ The bot is now activated and can receive messages from symphony
 **Step 4** - Use Amazon Lex to drive the conversation
 1. To bring the smarts of the lex bot inside symphony, we need to pass incoming messages to Lex.
 2. Enter `CTRL+C` to interrupt the bot listener
-3. Navigate to index.js at /symphony-bot-repo/kyc-bot/ and comment Line 83 and Uncomment Line 84. Save the file.
+3. Navigate to index.js at /symphony-bot-repo/kyc-bot/ and Uncomment Line 75. Save the file.
 4. Run `node index.js` to restart the bot listener  
 
 ---
@@ -215,8 +215,6 @@ Now that all the pieces of the puzzle are connected, lets see the whole thing in
 **Step 1** Test the document update flow  
 1. type Hi to the bot and answer
 **Step 2** Test the conversational flow
-
-To give yourself administrator permissions on the chat, you will have to type `/role [your-name]` in the app console.
 
 ---
 
