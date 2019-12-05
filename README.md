@@ -134,7 +134,7 @@ To create and integrate the lambda function, follow the steps below -
    ![Python Lambda Code](kyc-lambda/onboard_customer.py)
 
   4. Goto the Lex Console and select new lambda (onboard_customer) for FullFillment for the two intents : GatherPersonalInfo and HandleDocumentUpload 
-  5. Build and Publish the bot. **select alias as "DEV" in the publish dialog**. 
+  5. Build and Publish the bot. **select alias as "Dev" in the publish dialog**. 
   
   * Testing
 
@@ -147,7 +147,7 @@ To create and integrate the lambda function, follow the steps below -
 ### Setup the symphony account
 Symphony is a secure collaboration platform and you will need to login to the platform to test the bot.
 - **Url:** develop2.symphony.com
-- **Email and Password:** The email and password is provided on the Event Engine Dashboard at reInvent.
+- **Email and Password:** The email and password is send via email at reInvent.
 
 A symphony bot is an automated system user that engages in conversations with symphony users and can be used to  implement a business process.
 Each participant is assigned a unique bot for this workshop - the bot name is mentioned Event Engine dashboard.
@@ -175,7 +175,7 @@ A Cloud9 environment and repository containing the source files needed for the w
 ![Replace Config](./readme_images/Replace_Config.png)
 
 **Step 2** - Setup AWS credentials in Cloud9
-<<TODO: How to setup AWS Credentials>>
+We can let Cloud9 manage AWS credentials for this workshop. ** No action needed **
 **Step 3** - Start the bot to receive and send messages from Symphony
 1. Execute the following commands on a Cloud9 terminal window
 
